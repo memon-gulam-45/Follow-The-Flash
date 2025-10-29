@@ -32,3 +32,8 @@ body {
 .userFlash {
   background-color: green;
 }
+
+.game-over {
+  background-color: #ff6b6b;
+  transition: background-color 0.2s;
+}
