@@ -7,7 +7,7 @@
 
 ## 🌐 Live Demo
 
-👉 **[Play now:]**(https://memon-gulam-45.github.io/Follow-The-Flash/)
+👉 **[Play now]**(https://memon-gulam-45.github.io/Follow-The-Flash/)
 
 ---
 
