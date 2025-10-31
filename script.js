@@ -89,7 +89,12 @@ function checkHigh(score) {
       p.classList.remove("score-update");
     }, 800);
   }
-  p.innerText = `Your Highest Score Is : ${highestScore}`;
+
+  if (highestScore > 0) {
+    p.innerText = `Your Highest Score Is : ${highestScore}`;
+  } else {
+    p.innerText = "";
+  }
 }
 
 async function playSequence() {
@@ -113,9 +118,9 @@ function playSound(name) {
 
 function gameOver() {
   if (level != 0) {
-    h2.innerHTML = `Game Over !! Your Score Was <b>${
-      level - 1
-    }</b><br>Press Start To Play Again`;
+    h2.innerHTML = `Game Over!, Your Score Is: <b>${level - 1}</b>`;
+    p.innerHTML = `<span class="restart-hint">Press Start to Play Again</span>`;
+
     playSound("wrong");
   }
   document.body.classList.add("game-over");
