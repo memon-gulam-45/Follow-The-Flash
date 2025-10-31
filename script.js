@@ -27,10 +27,14 @@ function userFlash(btn) {
 }
 
 function levelUp() {
-  startBtn.style.display = "none";
+  startBtn.classList.add("hidden");
   userSeq = [];
   level++;
   h2.innerText = `Level ${level}`;
+  h2.classList.add("level-up");
+  setTimeout(() => {
+    h2.classList.remove("level-up");
+  }, 400);
   checkHigh(level - 1);
 
   let ranIdx = Math.floor(Math.random() * 4);
@@ -56,6 +60,7 @@ function btnPress() {
   if (isPlayingSequence) return;
   let btn = this;
   userFlash(btn);
+  playSound("click");
 
   let userColor = btn.getAttribute("id");
   userSeq.push(userColor);
@@ -73,12 +78,16 @@ function reset() {
   gameSeq = [];
   userSeq = [];
   level = 0;
-  startBtn.style.display = "inline-block";
+  startBtn.classList.remove("hidden");
 }
 
 function checkHigh(score) {
   if (score > highestScore) {
     highestScore = score;
+    p.classList.add("score-update");
+    setTimeout(() => {
+      p.classList.remove("score-update");
+    }, 800);
   }
   p.innerText = `Your Highest Score Is : ${highestScore}`;
 }
@@ -87,6 +96,7 @@ async function playSequence() {
   isPlayingSequence = true;
   for (let color of gameSeq) {
     const btn = document.querySelector(`.${color}`);
+    playSound("robot");
     gameFlash(btn);
     await delay(600);
   }
@@ -96,8 +106,18 @@ function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function playSound(name) {
+  let audio = new Audio(`sounds/${name}.mp3`);
+  audio.play();
+}
+
 function gameOver() {
-  h2.innerHTML = `Game Over !! Your Score Was <b>${level}</b><br>Press Start To Play Again`;
+  if (level != 0) {
+    h2.innerHTML = `Game Over !! Your Score Was <b>${
+      level - 1
+    }</b><br>Press Start To Play Again`;
+    playSound("wrong");
+  }
   document.body.classList.add("game-over");
   setTimeout(() => {
     document.body.classList.remove("game-over");
@@ -107,7 +127,10 @@ function gameOver() {
 
 startBtn.addEventListener("click", () => {
   if (!started) {
-    started = true;
-    levelUp();
+    playSound("start");
+    setTimeout(() => {
+      started = true;
+      levelUp();
+    }, 800);
   }
 });
