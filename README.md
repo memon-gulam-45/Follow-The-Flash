@@ -5,9 +5,9 @@
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Play Now
 
-👉 **[Play now](https://memon-gulam-45.github.io/Follow-The-Flash/)**
+👉 **[Click Here](https://memon-gulam-45.github.io/Follow-The-Flash/)**
 
 ---
 

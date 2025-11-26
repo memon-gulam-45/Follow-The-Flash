@@ -118,7 +118,7 @@ function playSound(name) {
 
 function gameOver() {
   if (level != 0) {
-    h2.innerHTML = `Game Over!, Your Score Is: <b>${level - 1}</b>`;
+    h2.innerHTML = `Game Over, Your Score Is: <b>${level - 1}</b>`;
     p.innerHTML = `<span class="restart-hint">Press Start to Play Again</span>`;
 
     playSound("wrong");
